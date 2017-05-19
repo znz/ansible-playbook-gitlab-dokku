@@ -1,0 +1,42 @@
+---
+- name: "Install dnsmasq"
+  apt:
+    name: dnsmasq
+
+# boot after creating docker0 interface
+- name: "Create dnsmasq.service.d of systemd"
+  file:
+    path: /etc/systemd/system/dnsmasq.service.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+- name: "Write dnsmasq.service.d/after-docker.conf"
+  template:
+    src: after-docker.conf.j2
+    dest: /etc/systemd/system/dnsmasq.service.d/after-docker.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "ufw allow in DNS"
+  ufw:
+    direction: in
+    interface: docker0
+    port: 53
+    rule: allow
+
+- name: "Read daemon.json"
+  command: cat /etc/docker/daemon.json
+  register: result
+  changed_when: no
+- set_fact: docker_daemon_json="{{ result.stdout | from_json }}"
+- name: "Update daemon.json"
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0400
+  notify:
+  - restart docker

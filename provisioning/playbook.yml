@@ -1,0 +1,100 @@
+---
+- hosts: all
+  become: yes
+  roles:
+  - role: znzj.ja_jp
+  - role: znz.ufw
+    ufw_default_forward_policy: reject
+    ufw_allow_in_tcp:
+    - comment: "HTTP"
+      port: 80
+    - comment: "HTTPS"
+      port: 443
+    ufw_allow_out_tcp:
+    - comment: "HTTP"
+      port: 80
+    - comment: "SSH"
+      port: 22
+  tasks:
+  - name: 'gitlab0 to /etc/hosts'
+    lineinfile:
+      path: /etc/hosts
+      regexp: '^10\.0\.0\.10 '
+      line: '10.0.0.10 gitlab.example.test gitlab0 registry.example.test mattermost.example.test'
+  - name: 'gitlab-runner1 to /etc/hosts'
+    lineinfile:
+      path: /etc/hosts
+      regexp: '^10\.0\.0\.11 '
+      line: '10.0.0.11 gitlab-runner1.example.test gitlab-runner1'
+  - name: 'gitlab-runner2 to /etc/hosts'
+    lineinfile:
+      path: /etc/hosts
+      regexp: '^10\.0\.0\.12 '
+      line: '10.0.0.12 gitlab-runner2.example.test gitlab-runner2'
+  - name: 'dokku0 to /etc/hosts'
+    lineinfile:
+      path: /etc/hosts
+      regexp: '^10\.0\.0\.9 '
+      line: '10.0.0.9 dokku0.example.test dokku0'
+
+- hosts: gitlab0
+  become: yes
+  roles:
+  - role: znz.gitlab-ce
+    gitlab_omnibus_config: |
+      external_url 'http://gitlab.example.test'
+      gitlab_rails['time_zone'] = 'Asia/Tokyo'
+      registry_external_url 'http://registry.example.test'
+      mattermost_external_url 'http://mattermost.example.test'
+      mattermost['email_enable_sign_in_with_email'] = false
+      mattermost['localization_server_locale'] = 'ja'
+      mattermost['localization_client_locale'] = 'ja'
+      mattermost['service_enable_incoming_webhooks'] = true
+
+- hosts: "gitlab-runner*"
+  become: yes
+  roles:
+  - role: znz.docker
+    docker_daemon_config:
+      insecure-registries:
+      - "registry.example.test"
+  - role: znz.gitlab-runner
+    gitlab_runner_coordinator_url: "http://gitlab.example.test/"
+    gitlab_runner_register_options: >-
+      --docker-volumes /var/run/docker.sock:/var/run/docker.sock
+
+- hosts: gitlab-runner1
+  become: yes
+  roles:
+  - role: docker-dns
+    dns:
+    - "10.0.0.11"
+
+- hosts: gitlab-runner2
+  become: yes
+  roles:
+  - role: docker-dns
+    dns:
+    - "10.0.0.12"
+
+- hosts: dokku0
+  become: yes
+  roles:
+  - role: znz.docker
+  - role: znz.dokku
+    dokku_vhost_enable: "true"
+    dokku_web_config: "false"
+    dokku_hostname: "10.0.0.9.xip.io"
+    dokku_skip_key_file: "false"
+    dokku_key_file: "/home/vagrant/.ssh/authorized_keys"
+  - role: docker-dns
+    dns:
+    - "10.0.0.9"
+  tasks:
+  - name: 'ufw allow out on docker0 proto tcp'
+    # allow nginx to app
+    ufw:
+      direction: out
+      interface: docker0
+      proto: tcp
+      rule: allow

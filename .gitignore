@@ -1,0 +1,3 @@
+*.retry
+/.vagrant/
+/provisioning/roles/*.*

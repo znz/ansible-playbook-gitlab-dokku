@@ -1,0 +1,11 @@
+---
+- src: znzj.ja_jp
+- src: znz.ufw
+- src: znz.docker
+- src: znz.dokku
+- src: https://github.com/znz/ansible-role-gitlab-ce
+  version: master
+  name: znz.gitlab-ce
+- src: https://github.com/znz/ansible-role-gitlab-runner
+  version: master
+  name: znz.gitlab-runner
