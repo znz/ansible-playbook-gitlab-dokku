@@ -1,0 +1,39 @@
+---
+stage_etc_hosts:
+- regexp: '^10\.0\.0\.10 '
+  line: '10.0.0.10 gitlab.example.test gitlab0 registry.example.test mattermost.example.test'
+- regexp: '^10\.0\.0\.11 '
+  line: '10.0.0.11 gitlab-runner1.example.test gitlab-runner1'
+- regexp: '^10\.0\.0\.12 '
+  line: '10.0.0.12 gitlab-runner2.example.test gitlab-runner2'
+- regexp: '^10\.0\.0\.9 '
+  line: '10.0.0.9 dokku0.example.test dokku0'
+
+stage_gitlab_omnibus_config: |
+  external_url 'http://gitlab.example.test'
+  gitlab_rails['time_zone'] = 'Asia/Tokyo'
+  registry_external_url 'http://registry.example.test'
+  mattermost_external_url 'http://mattermost.example.test'
+  mattermost['email_enable_sign_in_with_email'] = false
+  mattermost['localization_server_locale'] = 'ja'
+  mattermost['localization_client_locale'] = 'ja'
+  mattermost['service_enable_incoming_webhooks'] = true
+
+stage_gitlab_runner_docker_daemon_config:
+  insecure-registries:
+  - "registry.example.test"
+stage_gitlab_runner_coordinator_url: "http://gitlab.example.test/"
+stage_gitlab_runner_register_options: >-
+  --docker-volumes /var/run/docker.sock:/var/run/docker.sock
+
+stage_docker_dns:
+  gitlab-runner1:
+  - '10.0.0.11'
+  gitlab-runner2:
+  - '10.0.0.12'
+  dokku0:
+  - '10.0.0.9'
+
+stage_dokku_hostname: "10.0.0.9.xip.io"
+stage_dokku_skip_key_file: "false"
+stage_dokku_key_file: "/home/vagrant/.ssh/authorized_keys"

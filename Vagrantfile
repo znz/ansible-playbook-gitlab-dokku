@@ -69,6 +69,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision 'ansible' do |ansible|
     #ansible.inventory_path = 'provisioning/hosts'
     ansible.playbook = 'provisioning/playbook.yml'
+    ansible.inventory_path = 'provisioning/inventory/vagrant'
     ansible.verbose = ENV['ANSIBLE_VERBOSE'] if ENV['ANSIBLE_VERBOSE']
     ansible.tags = ENV['ANSIBLE_TAGS'] if ENV['ANSIBLE_TAGS']
 

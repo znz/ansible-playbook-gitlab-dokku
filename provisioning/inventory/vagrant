@@ -1,0 +1,12 @@
+[gitlab]
+gitlab0
+
+[gitlab-runner]
+gitlab-runner1
+gitlab-runner2
+
+[dokku]
+dokku0
+
+[all:vars]
+stage=vagrant
