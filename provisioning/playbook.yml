@@ -21,6 +21,11 @@
     - comment: "SSH"
       port: 22
   tasks:
+  - name: 'Comment out 127.0.1.1 in /etc/hosts'
+    replace:
+      path: /etc/hosts
+      regexp: '^(127\.0\.1\.1)'
+      replace: '#\1'
   - name: 'Update /etc/hosts'
     lineinfile:
       path: /etc/hosts
