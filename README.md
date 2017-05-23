@@ -25,3 +25,11 @@ Add following lines to `/etc/hosts`:
 - `export GITLAB_RUNNER_REGISTRATION_TOKEN=${copied registration token}`
 - `vagrant provision`
 - Open `http://mattermost.example.test/` for mattermost
+
+## letsencrypt
+
+This step cannot do in test environment.
+You must replace valid domains.
+
+- Run `sudo certbot certonly --webroot --webroot-path=/var/www/letsencrypt -d gitlab.example.test` on gitlab0
+- Run `sudo gitlab-ctl reconfigure` on gitlab0
