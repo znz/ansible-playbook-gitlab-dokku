@@ -10,8 +10,17 @@ stage_etc_hosts:
   line: '10.0.0.9 dokku0.example.test dokku0'
 
 stage_gitlab_omnibus_config: |
-  external_url 'http://gitlab.example.test'
+  gitlab_domain = 'gitlab.example.test'
+  if File.exist?("/etc/letsencrypt/live/#{gitlab_domain}/fullchain.pem")
+    external_url "https://#{gitlab_domain}"
+    nginx['redirect_http_to_https'] = true
+    nginx['ssl_certificate'] = "/etc/letsencrypt/live/#{gitlab_domain}/fullchain.pem"
+    nginx['ssl_certificate_key'] = "/etc/letsencrypt/live/#{gitlab_domain}/privkey.pem"
+  else
+    external_url "http://#{gitlab_domain}"
+  end
   gitlab_rails['time_zone'] = 'Asia/Tokyo'
+  nginx['custom_gitlab_server_config'] = 'location ^~ /.well-known { root /var/www/letsencrypt; }'
   registry_external_url 'http://registry.example.test'
   mattermost_external_url 'http://mattermost.example.test'
   mattermost['email_enable_sign_in_with_email'] = false

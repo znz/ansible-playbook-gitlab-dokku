@@ -38,6 +38,7 @@
   vars_files:
   - vars/{{ stage }}.yml
   roles:
+  - role: letsencrypt
   - role: znz.gitlab-ce
     gitlab_omnibus_config: "{{ stage_gitlab_omnibus_config }}"
 

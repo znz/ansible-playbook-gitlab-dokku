@@ -1,0 +1,34 @@
+---
+- name: 'Add certbot apt repository'
+  apt_repository:
+    repo: 'ppa:certbot/certbot'
+- name: 'Install certbot'
+  apt: name=certbot
+- name: 'Create /var/www'
+  file:
+    path: '/var/www'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+- name: 'Create /var/www/letsencrypt'
+  file:
+    path: '/var/www/letsencrypt'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+- name: 'Copy /etc/letsencrypt/cli.ini'
+  copy:
+    src: cli.ini
+    dest: /etc/letsencrypt/cli.ini
+    owner: root
+    group: root
+    mode: 0644
+- name: 'Copy renew-hook'
+  copy:
+    src: renew-hook
+    dest: /etc/letsencrypt/renew-hook
+    owner: root
+    group: root
+    mode: 0755
