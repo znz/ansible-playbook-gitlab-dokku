@@ -49,9 +49,22 @@ stage_gitlab_omnibus_config: |
   mattermost_nginx['custom_gitlab_mattermost_server_config'] = 'location ^~ /.well-known { root /var/www/letsencrypt; }'
 
   mattermost['email_enable_sign_in_with_email'] = false # gitlab accounts only
+  mattermost['email_enable_sign_up_with_email'] = false # default
+  mattermost['email_send_email_notifications'] = true
+  mattermost['email_smtp_username'] = "username"
+  mattermost['email_smtp_password'] = "password"
+  mattermost['email_smtp_server'] = "smtp.example.com"
+  mattermost['email_smtp_port'] = 465
+  mattermost['email_connection_security'] = 'TLS' # Or 'STARTTLS'
+  mattermost['email_feedback_name'] = "GitLab Mattermost"
+  mattermost['email_feedback_email'] = "email@example.com"
+
   mattermost['localization_server_locale'] = 'ja'
   mattermost['localization_client_locale'] = 'ja'
+
   mattermost['service_enable_incoming_webhooks'] = true
+
+  eval(File.read('/etc/gitlab/local.rb')) if File.exist?('/etc/gitlab/local.rb')
 
 stage_gitlab_runner_docker_daemon_config:
   insecure-registries:

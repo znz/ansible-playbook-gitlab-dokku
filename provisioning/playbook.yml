@@ -41,6 +41,13 @@
   - role: letsencrypt
   - role: znz.gitlab-ce
     gitlab_omnibus_config: "{{ stage_gitlab_omnibus_config }}"
+  tasks:
+  - name: 'ufw allow out to SMTPS'
+    ufw:
+      direction: out
+      proto: tcp
+      port: 465
+      rule: allow
 
 - hosts: gitlab-runner
   become: yes
