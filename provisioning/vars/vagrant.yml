@@ -67,6 +67,10 @@ stage_gitlab_omnibus_config: |
 
   mattermost['service_enable_incoming_webhooks'] = true
 
+  mattermost['team_enable_team_creation'] = false
+  mattermost['team_enable_user_creation'] = true # default, required by GitLab SSO
+  mattermost['team_restrict_creation_to_domains'] = 'example.com'
+
   eval(File.read('/etc/gitlab/local.rb')) if File.exist?('/etc/gitlab/local.rb')
 
 stage_gitlab_runner_docker_daemon_config:
