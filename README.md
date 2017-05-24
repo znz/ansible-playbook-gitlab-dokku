@@ -26,10 +26,31 @@ Add following lines to `/etc/hosts`:
 - `vagrant provision`
 - Open `http://mattermost.example.test/` for mattermost
 
-## letsencrypt
+### Unregister runner
 
-This step cannot do in test environment.
+- Login gitlab-runnerX
+- Run `sudo gitlab-runner list`
+- Copy URL and Token
+- Run `sudo gitlab-runner unregister -u $URL -t $TOKEN` with replacing `$URL` and `$TOKEN` with copied URL and Token
+
+## Production Usage
+
+### letsencrypt
+
+This step cannot do without valid domains.
 You must replace valid domains.
 
-- Run `sudo certbot certonly --webroot --webroot-path=/var/www/letsencrypt -d gitlab.example.test` on gitlab0
-- Run `sudo gitlab-ctl reconfigure` on gitlab0
+Run following commands on gitlab0.
+
+- `sudo certbot certonly --webroot --webroot-path=/var/www/letsencrypt -d gitlab.example.test`
+- `sudo certbot certonly --webroot --webroot-path=/var/www/letsencrypt -d registry.example.test`
+- `sudo certbot certonly --webroot --webroot-path=/var/www/letsencrypt -d mattermost.example.test`
+- `sudo gitlab-ctl reconfigure`
+
+### Register runner
+
+- Login as admin to gitlab
+- Open Admin Area (by clicking the wrench icon in the upper right corner)
+- Open Runners tab in Overview tab
+- Copy Registration token
+- Run `ansible-playbook -i provisioning/inventory/production -K -e gitlab_runner_registration_token=$GITLAB_RUNNER_REGISTRATION_TOKEN provisioning/playbook.yml` with replacing `$GITLAB_RUNNER_REGISTRATION_TOKEN` with copied registration token
