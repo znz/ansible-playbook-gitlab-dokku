@@ -10,7 +10,13 @@ stage_etc_hosts:
   line: '10.0.0.9 dokku0.example.test dokku0'
 
 stage_gitlab_omnibus_config: |
-  gitlab_domain = 'gitlab.example.test'
+  gitlab_rails['time_zone'] = 'Asia/Tokyo'
+
+  base_domain = 'example.test'
+  gitlab_domain = "gitlab.#{base_domain}"
+  registry_domain = "registry.#{base_domain}"
+  mattermost_domain = "mattermost.#{base_domain}"
+
   if File.exist?("/etc/letsencrypt/live/#{gitlab_domain}/fullchain.pem")
     external_url "https://#{gitlab_domain}"
     nginx['redirect_http_to_https'] = true
@@ -19,11 +25,30 @@ stage_gitlab_omnibus_config: |
   else
     external_url "http://#{gitlab_domain}"
   end
-  gitlab_rails['time_zone'] = 'Asia/Tokyo'
   nginx['custom_gitlab_server_config'] = 'location ^~ /.well-known { root /var/www/letsencrypt; }'
-  registry_external_url 'http://registry.example.test'
-  mattermost_external_url 'http://mattermost.example.test'
-  mattermost['email_enable_sign_in_with_email'] = false
+
+  if File.exist?("/etc/letsencrypt/live/#{registry_domain}/fullchain.pem")
+    registry_external_url "https://#{registry_domain}"
+    registry_nginx['redirect_http_to_https'] = true
+    registry_nginx['ssl_certificate'] = "/etc/letsencrypt/live/#{registry_domain}/fullchain.pem"
+    registry_nginx['ssl_certificate_key'] = "/etc/letsencrypt/live/#{registry_domain}/privkey.pem"
+  else
+    registry_external_url "http://#{registry_domain}"
+  end
+  registry_nginx['custom_gitlab_server_config'] = 'location ^~ /.well-known { root /var/www/letsencrypt; }'
+
+  if File.exist?("/etc/letsencrypt/live/#{mattermost_domain}/fullchain.pem")
+    mattermost_external_url "https://#{mattermost_domain}"
+    mattermost_nginx['redirect_http_to_https'] = true
+    mattermost_nginx['ssl_certificate'] = "/etc/letsencrypt/live/#{mattermost_domain}/fullchain.pem"
+    mattermost_nginx['ssl_certificate_key'] = "/etc/letsencrypt/live/#{mattermost_domain}/privkey.pem"
+    mattermost['service_use_ssl'] = true
+  else
+    mattermost_external_url "http://#{mattermost_domain}"
+  end
+  mattermost_nginx['custom_gitlab_mattermost_server_config'] = 'location ^~ /.well-known { root /var/www/letsencrypt; }'
+
+  mattermost['email_enable_sign_in_with_email'] = false # gitlab accounts only
   mattermost['localization_server_locale'] = 'ja'
   mattermost['localization_client_locale'] = 'ja'
   mattermost['service_enable_incoming_webhooks'] = true
