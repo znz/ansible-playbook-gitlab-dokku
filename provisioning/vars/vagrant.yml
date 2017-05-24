@@ -43,8 +43,10 @@ stage_gitlab_omnibus_config: |
     mattermost_nginx['ssl_certificate'] = "/etc/letsencrypt/live/#{mattermost_domain}/fullchain.pem"
     mattermost_nginx['ssl_certificate_key'] = "/etc/letsencrypt/live/#{mattermost_domain}/privkey.pem"
     mattermost['service_use_ssl'] = true
+    mattermost['service_site_url'] = "https://#{mattermost_domain}:443" # required by Email Batching
   else
     mattermost_external_url "http://#{mattermost_domain}"
+    mattermost['service_site_url'] = "http://#{mattermost_domain}:80" # required by Email Batching
   end
   mattermost_nginx['custom_gitlab_mattermost_server_config'] = 'location ^~ /.well-known { root /var/www/letsencrypt; }'
 
@@ -58,6 +60,7 @@ stage_gitlab_omnibus_config: |
   mattermost['email_connection_security'] = 'TLS' # Or 'STARTTLS'
   mattermost['email_feedback_name'] = "GitLab Mattermost"
   mattermost['email_feedback_email'] = "email@example.com"
+  mattermost['email_enable_batching'] = true
 
   mattermost['localization_server_locale'] = 'ja'
   mattermost['localization_client_locale'] = 'ja'
