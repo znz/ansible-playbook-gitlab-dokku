@@ -33,6 +33,10 @@ Add following lines to `/etc/hosts`:
 - Copy URL and Token
 - Run `sudo gitlab-runner unregister -u $URL -t $TOKEN` with replacing `$URL` and `$TOKEN` with copied URL and Token
 
+### Setting up Mattermost as a Slack project service integration
+
+see http://docs.gitlab.com/omnibus/gitlab-mattermost/#setting-up-mattermost-as-a-slack-project-service-integration
+
 ## Production Usage
 
 ### letsencrypt
