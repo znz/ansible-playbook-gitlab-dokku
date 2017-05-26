@@ -57,7 +57,7 @@ Run following commands on gitlab0.
 - Open Admin Area (by clicking the wrench icon in the upper right corner)
 - Open Runners tab in Overview tab
 - Copy Registration token
-- Run `ansible-playbook -i provisioning/inventory/production -K -e gitlab_runner_registration_token=$GITLAB_RUNNER_REGISTRATION_TOKEN provisioning/playbook.yml` with replacing `$GITLAB_RUNNER_REGISTRATION_TOKEN` with copied registration token
+- Run `ansible-playbook -i provision/inventory/production -K -e gitlab_runner_registration_token=$GITLAB_RUNNER_REGISTRATION_TOKEN provision/playbook.yml` with replacing `$GITLAB_RUNNER_REGISTRATION_TOKEN` with copied registration token
 
 ### Setup SMTP
 

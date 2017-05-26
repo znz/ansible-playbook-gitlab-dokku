@@ -1,5 +1,5 @@
 *.retry
 /.vagrant/
-/provisioning/inventory/production
-/provisioning/roles/*.*
-/provisioning/vars/production.yml
+/provision/inventory/production
+/provision/roles/*.*
+/provision/vars/production.yml

@@ -67,13 +67,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision 'ansible' do |ansible|
-    #ansible.inventory_path = 'provisioning/hosts'
-    ansible.playbook = 'provisioning/playbook.yml'
-    ansible.inventory_path = 'provisioning/inventory/vagrant'
+    #ansible.inventory_path = 'provision/hosts'
+    ansible.playbook = 'provision/playbook.yml'
+    ansible.inventory_path = 'provision/inventory/vagrant'
     ansible.verbose = ENV['ANSIBLE_VERBOSE'] if ENV['ANSIBLE_VERBOSE']
     ansible.tags = ENV['ANSIBLE_TAGS'] if ENV['ANSIBLE_TAGS']
 
-    ansible.galaxy_role_file = 'provisioning/requirements.yml'
+    ansible.galaxy_role_file = 'provision/requirements.yml'
     unless ENV['ANSIBLE_GALAXY_WITH_FORCE']
       # without --force
       ansible.galaxy_command = 'ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path}'
