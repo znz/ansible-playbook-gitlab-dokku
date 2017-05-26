@@ -91,3 +91,6 @@ stage_docker_dns:
 stage_dokku_hostname: "10.0.0.9.xip.io"
 stage_dokku_skip_key_file: "false"
 stage_dokku_key_file: "/home/vagrant/.ssh/authorized_keys"
+stage_dokku_plugin:
+- name: postgres
+  url: https://github.com/dokku/dokku-postgres.git

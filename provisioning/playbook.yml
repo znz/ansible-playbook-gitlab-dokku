@@ -74,6 +74,7 @@
     dokku_hostname: "{{ stage_dokku_hostname }}"
     dokku_skip_key_file: "{{ stage_dokku_skip_key_file }}"
     dokku_key_file: "{{ stage_dokku_key_file }}"
+    dokku_plugin: "{{ stage_dokku_plugin }}"
   - role: docker-dns
     dns: "{{ stage_docker_dns[ansible_hostname] }}"
   tasks:
