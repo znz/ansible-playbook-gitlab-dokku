@@ -59,6 +59,7 @@
   - role: znz.gitlab-runner
     gitlab_runner_coordinator_url: "{{ stage_gitlab_runner_coordinator_url }}"
     gitlab_runner_register_options: "{{ stage_gitlab_runner_register_options }}"
+    gitlab_runner_tags: "{{ stage_gitlab_runner_tags }}"
   - role: docker-dns
     dns: "{{ stage_docker_dns[ansible_hostname] }}"
 

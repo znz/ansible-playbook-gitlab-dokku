@@ -79,6 +79,9 @@ stage_gitlab_runner_docker_daemon_config:
 stage_gitlab_runner_coordinator_url: "http://gitlab.example.test/"
 stage_gitlab_runner_register_options: >-
   --docker-volumes /var/run/docker.sock:/var/run/docker.sock
+stage_gitlab_runner_tags:
+- docker
+- vagrant
 
 stage_docker_dns:
   gitlab-runner1:
