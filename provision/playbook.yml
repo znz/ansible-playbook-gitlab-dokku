@@ -62,6 +62,12 @@
     gitlab_runner_tags: "{{ stage_gitlab_runner_tags }}"
   - role: docker-dns
     dns: "{{ stage_docker_dns[ansible_hostname] }}"
+  tasks:
+  - name: "Set concurrent of gitlab runner"
+    lineinfile:
+      path: "/etc/gitlab-runner/config.toml"
+      regexp: '^concurrent = '
+      line: "concurrent = {{ stage_gitlab_runner_concurrent }}"
 
 - hosts: dokku
   become: yes

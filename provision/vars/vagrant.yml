@@ -103,6 +103,7 @@ stage_gitlab_runner_register_options: >-
 stage_gitlab_runner_tags:
 - docker
 - vagrant
+stage_gitlab_runner_concurrent: 2
 
 stage_docker_dns:
   gitlab-runner1:
