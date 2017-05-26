@@ -58,3 +58,20 @@ Run following commands on gitlab0.
 - Open Runners tab in Overview tab
 - Copy Registration token
 - Run `ansible-playbook -i provisioning/inventory/production -K -e gitlab_runner_registration_token=$GITLAB_RUNNER_REGISTRATION_TOKEN provisioning/playbook.yml` with replacing `$GITLAB_RUNNER_REGISTRATION_TOKEN` with copied registration token
+
+### Setup SMTP
+
+Create `/etc/gitlab/local.rb` (eval in last of my `/etc/gitlab/gitlab.rb`).
+
+For example:
+
+    gitlab_rails['smtp_address'] = 'smtp.example.com'
+    gitlab_rails['smtp_user_name'] = 'username'
+    gitlab_rails['smtp_password'] = 'password'
+    mattermost['email_smtp_username'] = 'username'
+    mattermost['email_smtp_password'] = 'password'
+    mattermost['email_smtp_server'] = 'smtp.example.com'
+    mattermost['email_feedback_email'] = 'email@example.com'
+    mattermost['support_email'] =  'support@example.com'
+
+See https://docs.gitlab.com/omnibus/settings/smtp.html for more examples.

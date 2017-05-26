@@ -50,17 +50,38 @@ stage_gitlab_omnibus_config: |
   end
   mattermost_nginx['custom_gitlab_mattermost_server_config'] = 'location ^~ /.well-known { root /var/www/letsencrypt; }'
 
+  # GitLab user privileges
+  gitlab_rails['gitlab_default_can_create_group'] = false
+  gitlab_rails['gitlab_username_changing_enabled'] = false
+
+  # Default project feature settings
+  gitlab_rails['gitlab_default_projects_features_issues'] = false
+  gitlab_rails['gitlab_default_projects_features_merge_requests'] = false
+  gitlab_rails['gitlab_default_projects_features_wiki'] = false
+  gitlab_rails['gitlab_default_projects_features_snippets'] = false
+  gitlab_rails['gitlab_default_projects_features_builds'] = false
+  gitlab_rails['gitlab_default_projects_features_container_registry'] = false
+
+  # https://docs.gitlab.com/omnibus/settings/smtp.html
+  gitlab_rails['smtp_enable'] = true
+  gitlab_rails['smtp_address'] = 'smtp.example.com'
+  gitlab_rails['smtp_port'] = 465
+  gitlab_rails['smtp_user_name'] = 'username'
+  gitlab_rails['smtp_password'] = 'password'
+  gitlab_rails['smtp_tls'] = true
+
   mattermost['email_enable_sign_in_with_email'] = false # gitlab accounts only
   mattermost['email_enable_sign_up_with_email'] = false # default
   mattermost['email_send_email_notifications'] = true
-  mattermost['email_smtp_username'] = "username"
-  mattermost['email_smtp_password'] = "password"
-  mattermost['email_smtp_server'] = "smtp.example.com"
+  mattermost['email_smtp_username'] = 'username'
+  mattermost['email_smtp_password'] = 'password'
+  mattermost['email_smtp_server'] = 'smtp.example.com'
   mattermost['email_smtp_port'] = 465
-  mattermost['email_connection_security'] = 'TLS' # Or 'STARTTLS'
-  mattermost['email_feedback_name'] = "GitLab Mattermost"
-  mattermost['email_feedback_email'] = "email@example.com"
+  mattermost['email_connection_security'] = 'TLS'
+  mattermost['email_feedback_name'] = 'GitLab Mattermost'
+  mattermost['email_feedback_email'] = 'email@example.com'
   mattermost['email_enable_batching'] = true
+  mattermost['support_email'] =  'support@example.com'
 
   mattermost['localization_server_locale'] = 'ja'
   mattermost['localization_client_locale'] = 'ja'
