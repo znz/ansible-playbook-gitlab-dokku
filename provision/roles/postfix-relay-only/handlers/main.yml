@@ -1,0 +1,5 @@
+---
+- name: reload postfix
+  command: service postfix reload
+- name: postmap sasl_password
+  command: postmap /etc/postfix/sasl/sasl_password

@@ -1,0 +1,13 @@
+---
+postfix_main_cf:
+  smtp_tls_security_level: "encrypt"
+  smtp_tls_wrappermode: "yes"
+  smtp_sasl_auth_enable: "yes"
+  smtp_sasl_password_maps: "hash:/etc/postfix/sasl/sasl_password"
+  smtp_sasl_tls_security_options: "noanonymous"
+  smtp_sasl_mechanism_filter: "plain"
+  smtp_tls_CApath: "/etc/ssl/certs/ca-certificates.crt"
+postfix_relay_smtp_server: "smtp.example.com"
+postfix_relay_smtp_port: 465
+postfix_relay_smtp_user: "user@example.com"
+postfix_relay_smtp_pass: "password"
