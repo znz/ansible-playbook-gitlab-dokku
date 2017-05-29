@@ -1,5 +1,6 @@
 ---
 postfix_main_cf:
+  compatibility_level: 2
   smtp_tls_security_level: "encrypt"
   smtp_tls_wrappermode: "yes"
   smtp_sasl_auth_enable: "yes"
