@@ -22,6 +22,7 @@
       port: 22
     - comment: "SMTPS"
       port: 465
+  - role: znz.journald
   - role: postfix-relay-only
   - role: logcheck
   tasks:

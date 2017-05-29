@@ -1,6 +1,7 @@
 ---
 - src: znzj.ja_jp
 - src: znz.ufw
+- src: znz.journald
 - src: znz.docker
 - src: znz.dokku
 - src: https://github.com/znz/ansible-role-gitlab-ce
