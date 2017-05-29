@@ -1,0 +1,37 @@
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ /usr/lib/snapd/snapd
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ /usr/sbin/irqbalance: Balancing is ineffective on systems with a single cpu\.  Shutting down$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ [-[:alnum:]]+: debug:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ [-[:alnum:]]+\[[[:digit:]]+\]: started
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ [[:alnum:]]+\[[[:digit:]]+\]:    \.\.\.done\.$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ [[:alnum:]]+\[[[:digit:]]+\]:  \* Starting
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ [[:alnum:]]+\[[[:digit:]]+\]:  \* Stopping
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ acpid:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ ansible-[_[:alnum:]]+:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ apparmor\[[[:digit:]]+\]:  \* Reloading AppArmor profiles$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ apparmor\[[[:digit:]]+\]: Skipping profile in /etc/apparmor\.d/disable: usr\.sbin\.rsyslogd$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dbus\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dhclient\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ iscsiadm\[[[:digit:]]+\]: iscsiadm: No records found$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ iscsid: iSCSI (logger|daemon) with pid=[[:digit:]]+ started!$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ iscsid: iscsid shutting down\.$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ kernel:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ loadkeys\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ lvm\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ lxcfs\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2007:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2039:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2222:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd: rsyslogd's (group|user)id changed to
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sh\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ snapd?\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: Accepted publickey for
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: Disconnected from
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: Received disconnect from
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sudoedit: pam_unix\(sudo:session\): session (opened|closed) for user
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ systemd-fsck\[[[:digit:]]+\]: /dev/[[:alnum:]]+: clean, [[:digit:]]+/[[:digit:]]+ files, [[:digit:]]+/[[:digit:]]+ blocks$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ systemd-logind\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ systemd-modules-load\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ systemd-udevd\[[[:digit:]]+\]: Process '/lib/udev/hdparm' failed with exit code 5\.$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ systemd: pam_unix\(systemd-user:session\): session (opened|closed) for user
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ systemd\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ vboxadd

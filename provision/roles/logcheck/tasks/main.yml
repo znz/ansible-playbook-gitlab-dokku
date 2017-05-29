@@ -1,0 +1,10 @@
+---
+- name: 'Install logcheck'
+  apt: name=logcheck
+- name: 'Copy local ignore'
+  copy:
+    src: local-ignore
+    dest: /etc/logcheck/ignore.d.server/local
+    owner: root
+    group: logcheck
+    mode: 0644

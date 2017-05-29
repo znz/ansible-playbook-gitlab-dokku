@@ -23,6 +23,7 @@
     - comment: "SMTPS"
       port: 465
   - role: postfix-relay-only
+  - role: logcheck
   tasks:
   - name: 'Comment out 127.0.1.1 in /etc/hosts'
     replace:
@@ -35,6 +36,8 @@
       regexp: "{{ item.regexp }}"
       line: "{{ item.line }}"
     with_items: "{{ stage_etc_hosts }}"
+  - name: 'Install logwatch'
+    apt: name=logwatch
 
 - hosts: gitlab
   become: yes
