@@ -10,3 +10,6 @@
 - src: https://github.com/znz/ansible-role-gitlab-runner
   version: master
   name: znz.gitlab-runner
+- src: https://github.com/znz/ansible-role-nadoka
+  version: master
+  name: znz.nadoka

@@ -81,6 +81,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     ansible.extra_vars = {
       gitlab_runner_registration_token: ENV['GITLAB_RUNNER_REGISTRATION_TOKEN'],
+      nadoka_irc_host: ENV['NADOKA_IRC_HOST'],
+      nadoka_irc_port: ENV['NADOKA_IRC_PORT'],
+      nadoka_irc_pass: ENV['NADOKA_IRC_PASS'],
+      nadoka_channel_info: ENV['NADOKA_CHANNEL_INFO'],
       postfix_relay_smtp_server: ENV['SMTP_SERVER'],
       postfix_relay_smtp_user: ENV['SMTP_USER'],
       postfix_relay_smtp_pass: ENV['SMTP_PASS'],
