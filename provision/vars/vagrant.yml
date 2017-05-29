@@ -1,4 +1,11 @@
 ---
+journald_users:
+- 'vagrant'
+
+#postfix_relay_smtp_server: 'smtp.example.com'
+#postfix_relay_smtp_user: 'smtpuser'
+#postfix_relay_smtp_pass: 'smtppass'
+
 stage_etc_hosts:
 - regexp: '^10\.0\.0\.10 '
   line: '10.0.0.10 gitlab.example.test gitlab0 registry.example.test mattermost.example.test'
