@@ -3,11 +3,11 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ [-[:alnum:]]+: debug:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ [-[:alnum:]]+\[[[:digit:]]+\]: started
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ [[:alnum:]]+\[[[:digit:]]+\]:    \.\.\.done\.$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ [[:alnum:]]+\[[[:digit:]]+\]:  \* Reloading
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ [[:alnum:]]+\[[[:digit:]]+\]:  \* Starting
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ [[:alnum:]]+\[[[:digit:]]+\]:  \* Stopping
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ acpid:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ ansible-[_[:alnum:]]+:
-^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ apparmor\[[[:digit:]]+\]:  \* Reloading AppArmor profiles$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ apparmor\[[[:digit:]]+\]: Skipping profile in /etc/apparmor\.d/disable: usr\.sbin\.rsyslogd$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dbus\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dhclient\[[[:digit:]]+\]:
@@ -25,6 +25,7 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ loadkeys\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ lvm\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ lxcfs\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ postfix/master\[[[:digit:]]+\]: reload -- version 3\.1\.0, configuration /etc/postfix$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2007:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2039:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2222:
