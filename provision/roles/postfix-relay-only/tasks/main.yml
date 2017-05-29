@@ -18,6 +18,7 @@
 - name: "Update sasl_password"
   lineinfile:
     path: "/etc/postfix/sasl/sasl_password"
+    regexp: '^\[{{ postfix_relay_smtp_server | regex_escape() }}\]:{{ postfix_relay_smtp_port }} '
     line: "[{{ postfix_relay_smtp_server }}]:{{ postfix_relay_smtp_port }} {{ postfix_relay_smtp_user }}:{{ postfix_relay_smtp_pass }}"
     create: yes
     owner: "root"
