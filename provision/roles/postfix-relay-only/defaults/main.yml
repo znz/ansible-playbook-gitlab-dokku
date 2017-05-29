@@ -11,3 +11,4 @@ postfix_relay_smtp_server: "smtp.example.com"
 postfix_relay_smtp_port: 465
 postfix_relay_smtp_user: "user@example.com"
 postfix_relay_smtp_pass: "password"
+postfix_alias_root: "admin@example.com"
