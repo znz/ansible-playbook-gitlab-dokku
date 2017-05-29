@@ -1,4 +1,5 @@
 *.retry
+/.env
 /.vagrant/
 /provision/inventory/production
 /provision/roles/*.*
