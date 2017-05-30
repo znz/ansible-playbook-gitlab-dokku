@@ -26,6 +26,7 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ lvm\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ lxcfs\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ postfix/master\[[[:digit:]]+\]: reload -- version 3\.1\.0, configuration /etc/postfix$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ python3\[[[:digit:]]+\]: ansible-
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2007:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2039:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2222:
