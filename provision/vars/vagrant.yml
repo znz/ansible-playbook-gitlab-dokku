@@ -56,10 +56,16 @@ stage_gitlab_omnibus_config: |
     mattermost_nginx['ssl_certificate'] = "/etc/letsencrypt/live/#{mattermost_domain}/fullchain.pem"
     mattermost_nginx['ssl_certificate_key'] = "/etc/letsencrypt/live/#{mattermost_domain}/privkey.pem"
     mattermost['service_use_ssl'] = true
-    mattermost['service_site_url'] = "https://#{mattermost_domain}:443" # required by Email Batching
+    # required by Email Batching
+    #mattermost['service_site_url'] = "https://#{mattermost_domain}:443"
+    # port causes Bad token type error https://github.com/mattermost/platform/issues/6489
+    mattermost['service_site_url'] = "https://#{mattermost_domain}"
   else
     mattermost_external_url "http://#{mattermost_domain}"
-    mattermost['service_site_url'] = "http://#{mattermost_domain}:80" # required by Email Batching
+    # required by Email Batching
+    #mattermost['service_site_url'] = "http://#{mattermost_domain}:80"
+    # port causes Bad token type error https://github.com/mattermost/platform/issues/6489
+    mattermost['service_site_url'] = "http://#{mattermost_domain}"
   end
   mattermost_nginx['custom_gitlab_mattermost_server_config'] = 'location ^~ /.well-known { root /var/www/letsencrypt; }'
 
