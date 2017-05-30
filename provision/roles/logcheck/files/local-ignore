@@ -16,8 +16,8 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dnsmasq\[[[:digit:]]+\]: dnsmasq: syntax check OK\.$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dockerd\[[[:digit:]]+\]: .*level=(info|warning) msg=
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dokku\[[[:digit:]]+\]:
-^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-ci-multi-runner\[[[:digit:]]+\]: .*level=info msg=
-^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-runner\[[[:digit:]]+\]: .*level=info msg=
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-ci-multi-runner\[[[:digit:]]+\]: .*level=(info|warning) msg=
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-runner\[[[:digit:]]+\]: .*level=(info|warning) msg=
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ iscsiadm\[[[:digit:]]+\]: iscsiadm: No records found$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ iscsid: iSCSI (logger|daemon) with pid=[[:digit:]]+ started!$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ iscsid: iscsid shutting down\.$
@@ -25,7 +25,7 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ loadkeys\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ lvm\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ lxcfs\[[[:digit:]]+\]:
-^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ postfix/master\[[[:digit:]]+\]: reload -- version 3\.1\.0, configuration /etc/postfix$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ postfix/master\[[[:digit:]]+\]: (started|reload) -- version 3\.1\.0, configuration /etc/postfix$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ python3\[[[:digit:]]+\]: ansible-
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2007:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2039:
