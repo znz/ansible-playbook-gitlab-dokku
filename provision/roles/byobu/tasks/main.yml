@@ -1,0 +1,21 @@
+---
+- name: "Init byobu"
+  shell: >-
+    creates=/home/{{ item }}/.byobu
+    sudo -H -u {{ item }} script -c 'SHELL=/bin/true byobu' /dev/null || :
+  with_items: "{{ byobu_users }}"
+
+- name: "Copy keybindings.tmux"
+  copy:
+    src: keybindings.tmux
+    dest: "/home/{{ item }}/.byobu/keybindings.tmux"
+    owner: "{{ item }}"
+    mode: 0644
+  with_items: "{{ byobu_users }}"
+
+- name: "Comment out logo"
+  replace:
+    path: "/home/{{ item }}/.byobu/status"
+    regexp: '([^#])logo'
+    replace: '\1#logo'
+  with_items: "{{ byobu_users }}"

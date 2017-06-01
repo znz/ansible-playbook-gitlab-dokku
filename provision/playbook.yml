@@ -29,6 +29,7 @@
   - role: logcheck
   - role: znz.nadoka
     when: nadoka_irc_host is not none and nadoka_irc_host != ""
+  - role: byobu
   tasks:
   - name: 'Comment out 127.0.1.1 in /etc/hosts'
     replace:
