@@ -23,6 +23,7 @@
     - comment: "SMTPS"
       port: 465
   - role: znz.journald
+  - role: sshd
   - role: postfix-relay-only
     when: postfix_relay_smtp_server is not none and postfix_relay_smtp_server != ""
   - role: logcheck

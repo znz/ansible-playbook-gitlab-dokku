@@ -1,0 +1,45 @@
+---
+- name: "sshd_config: PermitRootLogin"
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin"
+    line: "PermitRootLogin prohibit-password"
+  notify: restart sshd
+- name: "sshd_config: ChallengeResponseAuthentication"
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^ChallengeResponseAuthentication"
+    line: "ChallengeResponseAuthentication no"
+  notify: restart sshd
+- name: "sshd_config: PasswordAuthentication"
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^#?PasswordAuthentication"
+    line: "PasswordAuthentication no"
+  notify: restart sshd
+- name: "sshd_config: UsePAM"
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^UsePAM"
+    line: "UsePAM yes"
+  notify: restart sshd
+- name: "sshd_config: AllowUsers"
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    line: "AllowUsers {{ item }}"
+  with_items: "{{ sshd_allow_users }}"
+  notify: restart sshd
+
+- name: "TCP wrappers: deny all"
+  lineinfile:
+    dest: /etc/hosts.deny
+    line: "ALL: ALL"
+- name: "TCP wrappers: sshd allow from localhost"
+  lineinfile:
+    dest: /etc/hosts.allow
+    line: "sshd: 127.0.0.1 [::1]"
+- name: "TCP wrappers: sshd allow"
+  lineinfile:
+    dest: /etc/hosts.allow
+    line: "sshd: {{ item }}"
+  with_items: "{{ sshd_allow_tcp_wrappers }}"

@@ -1,0 +1,7 @@
+---
+sshd_allow_users:
+- 'vagrant'
+
+sshd_allow_tcp_wrappers:
+- '10.'
+- '.jp'
