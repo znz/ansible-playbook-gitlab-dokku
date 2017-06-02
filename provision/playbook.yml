@@ -53,6 +53,9 @@
   - role: letsencrypt
   - role: znz.gitlab-ce
     gitlab_omnibus_config: "{{ stage_gitlab_omnibus_config }}"
+  - role: sshd
+    sshd_allow_users:
+    - 'git'
 
 - hosts: gitlab-runner
   become: yes
@@ -89,6 +92,9 @@
     dokku_plugin: "{{ stage_dokku_plugin }}"
   - role: docker-dns
     dns: "{{ stage_docker_dns[ansible_hostname] }}"
+  - role: sshd
+    sshd_allow_users:
+    - 'dokku'
   tasks:
   - name: 'ufw allow out on docker0 proto tcp'
     # allow nginx to app
