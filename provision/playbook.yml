@@ -23,7 +23,7 @@
     - comment: "SMTPS"
       port: 465
   - role: znz.journald
-  - role: sshd
+  - role: znz.sshd
   - role: postfix-relay-only
     when: postfix_relay_smtp_server is not none and postfix_relay_smtp_server != ""
   - role: logcheck
@@ -54,7 +54,7 @@
   - role: letsencrypt
   - role: znz.gitlab-ce
     gitlab_omnibus_config: "{{ stage_gitlab_omnibus_config }}"
-  - role: sshd
+  - role: znz.sshd
     sshd_allow_users:
     - 'git'
 
@@ -93,7 +93,7 @@
     dokku_plugin: "{{ stage_dokku_plugin }}"
   - role: docker-dns
     dns: "{{ stage_docker_dns[ansible_hostname] }}"
-  - role: sshd
+  - role: znz.sshd
     sshd_allow_users:
     - 'dokku'
   tasks:
