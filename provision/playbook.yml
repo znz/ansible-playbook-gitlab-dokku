@@ -84,6 +84,7 @@
   - vars/{{ stage }}.yml
   roles:
   - role: znz.docker
+    docker_daemon_config: "{{ stage_dokku_daemon_config }}"
   - role: znz.dokku
     dokku_vhost_enable: "true"
     dokku_web_config: "false"
