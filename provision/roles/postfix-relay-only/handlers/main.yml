@@ -1,7 +1,0 @@
----
-- name: reload postfix
-  service: name=postfix state=reloaded
-- name: postmap sasl_password
-  command: postmap /etc/postfix/sasl/sasl_password
-- name: newaliases
-  command: newaliases

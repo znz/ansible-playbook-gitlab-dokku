@@ -24,7 +24,7 @@
       port: 465
   - role: znz.journald
   - role: znz.sshd
-  - role: postfix-relay-only
+  - role: znz.postfix-relay-only
     when: postfix_relay_smtp_server is not none and postfix_relay_smtp_server != ""
   - role: logcheck
   - role: znz.unattended-upgrades

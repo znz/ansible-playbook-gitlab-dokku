@@ -5,6 +5,9 @@
 - src: https://github.com/znz/ansible-role-sshd
   version: master
   name: znz.sshd
+- src: https://github.com/znz/ansible-role-postfix-relay-only
+  version: master
+  name: znz.postfix-relay-only
 - src: znz.docker
 - src: znz.dokku
 - src: https://github.com/znz/ansible-role-gitlab-ce
