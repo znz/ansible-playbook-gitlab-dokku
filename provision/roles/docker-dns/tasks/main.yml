@@ -38,5 +38,6 @@
     owner: root
     group: root
     mode: 0400
+  when: "docker_daemon_json != docker_daemon_json|combine({'dns':dns})"
   notify:
   - restart docker
