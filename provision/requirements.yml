@@ -20,3 +20,6 @@
   version: master
   name: znz.nadoka
 - src: znz.unattended-upgrades
+- src: https://github.com/znz/ansible-role-ntp
+  version: master
+  name: znz.ntp

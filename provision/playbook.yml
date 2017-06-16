@@ -30,6 +30,7 @@
   - role: znz.unattended-upgrades
   - role: znz.nadoka
     when: nadoka is not none and nadoka != []
+  - role: znz.ntp
   - role: byobu
   tasks:
   - name: 'Comment out 127.0.1.1 in /etc/hosts'

@@ -24,6 +24,16 @@ nadoka:
 #postfix_relay_smtp_user: 'smtpuser'
 #postfix_relay_smtp_pass: 'smtppass'
 
+ntp_servers:
+- ntp1.jst.mfeed.ad.jp
+- ntp2.jst.mfeed.ad.jp
+- ntp3.jst.mfeed.ad.jp
+ntp_peers:
+- 10.0.0.10
+- 10.0.0.11
+- 10.0.0.12
+- 10.0.0.9
+
 stage_etc_hosts:
 - regexp: '^10\.0\.0\.10 '
   line: '10.0.0.10 gitlab.example.test gitlab0 registry.example.test mattermost.example.test'
