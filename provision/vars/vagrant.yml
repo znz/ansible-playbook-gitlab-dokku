@@ -12,11 +12,13 @@ sshd_allow_tcp_wrappers:
 byobu_users:
 - 'vagrant'
 
-nadoka_irc_host: ''
-#nadoka_irc_port: 6697
-nadoka_irc_pass: "nil"
-nadoka_irc_ssl_params: '{}'
-nadoka_channel_info: "'#private' => { key: 'channelkey' }"
+nadoka:
+- service_name: 'fprog'
+  irc_host: ''
+  irc_port: 6697
+  irc_pass: "nil"
+  irc_ssl_params: '{}'
+  channel_info: "'#private' => { key: 'channelkey' }"
 
 #postfix_relay_smtp_server: 'smtp.example.com'
 #postfix_relay_smtp_user: 'smtpuser'

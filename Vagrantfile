@@ -79,15 +79,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ansible.galaxy_command = 'ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path}'
     end
 
-    ansible.extra_vars = {
+    vars = {
       gitlab_runner_registration_token: ENV['GITLAB_RUNNER_REGISTRATION_TOKEN'],
-      nadoka_irc_host: ENV['NADOKA_IRC_HOST'],
-      nadoka_irc_port: ENV['NADOKA_IRC_PORT'],
-      nadoka_irc_pass: ENV['NADOKA_IRC_PASS'],
-      nadoka_channel_info: ENV['NADOKA_CHANNEL_INFO'],
+      nadoka: [],
       postfix_relay_smtp_server: ENV['SMTP_SERVER'],
       postfix_relay_smtp_user: ENV['SMTP_USER'],
       postfix_relay_smtp_pass: ENV['SMTP_PASS'],
     }
+    if ENV.key?('NADOKA_SERVICE_NAME')
+      vars[:nadoka] << {
+        service_name: ENV['NADOKA_SERVICE_NAME'],
+        irc_host: ENV['NADOKA_IRC_HOST'],
+        irc_port: ENV['NADOKA_IRC_PORT'],
+        irc_pass: ENV['NADOKA_IRC_PASS'],
+        irc_ssl_params: '{}',
+        irc_nick: 'User',
+        channel_info: ENV['NADOKA_CHANNEL_INFO'],
+      }
+    end
+    ansible.extra_vars = vars
   end
 end
