@@ -28,8 +28,9 @@
     when: postfix_relay_smtp_server is not none and postfix_relay_smtp_server != ""
   - role: logcheck
   - role: znz.unattended-upgrades
-  - role: znz.nadoka
-    when: nadoka_irc_host is not none and nadoka_irc_host != ""
+  - role: remove-old-nadoka
+#  - role: znz.nadoka
+#    when: nadoka_irc_host is not none and nadoka_irc_host != ""
   - role: byobu
   tasks:
   - name: 'Comment out 127.0.1.1 in /etc/hosts'

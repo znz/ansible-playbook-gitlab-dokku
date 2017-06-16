@@ -1,0 +1,15 @@
+---
+- name: "Stop nadoka service"
+  systemd:
+    name: "{{ nadoka_service_name }}.service"
+    state: stopped
+    enabled: no
+  ignore_errors: yes
+- name: "Remove nadoka rc file"
+  file:
+    path: "{{ nadoka_root }}/{{ nadoka_service_name }}.rc"
+    state: absent
+- name: "Remove nadoka service file for systemd"
+  file:
+    path: "/etc/systemd/system/{{ nadoka_service_name }}.service"
+    state: absent

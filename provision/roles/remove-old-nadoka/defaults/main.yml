@@ -1,0 +1,3 @@
+---
+nadoka_root: /opt/nadoka
+nadoka_service_name: "nadoka"
