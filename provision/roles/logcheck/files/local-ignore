@@ -26,7 +26,7 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ loadkeys\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ lvm\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ lxcfs\[[[:digit:]]+\]:
-^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ ntpd[_[:alnum:]]+:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ ntpd\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ postfix/master\[[[:digit:]]+\]: (daemon )?(started|reload) -- version 3\.1\.0, configuration /etc/postfix$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ python3\[[[:digit:]]+\]: ansible-
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rsyslogd-2007:
