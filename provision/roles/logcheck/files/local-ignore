@@ -14,6 +14,7 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dnsmasq\[[[:digit:]]+\]: DNS service limited to local subnets$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dnsmasq\[[[:digit:]]+\]: compile time options:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dnsmasq\[[[:digit:]]+\]: dnsmasq: syntax check OK\.$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dnsmasq\[[[:digit:]]+\]: no servers found in /var/run/dnsmasq/resolv\.conf, will retry$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dockerd\[[[:digit:]]+\]: .*level=(info|warning) msg=
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dokku\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-(ci-multi-)?runner\[[[:digit:]]+\]: time="[^"]+" level=error msg="Checking GitLab compatibility\.\.\. not-compatible" reason="GitLab Runner >= 9\.0 can be used ONLY with GitLab CE/EE >= 9\.0" result=-1 runner=[[:xdigit:]]+ statusText="couldn't execute POST against https?://[a-z0-9.-]+/api/v4/runners/verify: Post https?://[a-z0-9.-]+/api/v4/runners/verify: dial tcp [0-9.]+:[0-9]+: getsockopt: connection refused"
