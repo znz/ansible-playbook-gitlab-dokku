@@ -15,6 +15,9 @@
       port: 80
     - comment: "HTTPS"
       port: 443
+    - comment: "SSH"
+      port: 22
+    ufw_limit_in_tcp: []
     ufw_allow_out_tcp:
     - comment: "HTTP"
       port: 80
