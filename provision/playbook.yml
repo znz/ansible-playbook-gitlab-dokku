@@ -49,6 +49,22 @@
     with_items: "{{ stage_etc_hosts }}"
   - name: 'Install logwatch'
     apt: name=logwatch
+  - name: 'Add ansible user'
+    user:
+      name: ansible
+      shell: /bin/bash
+  - name: 'Allow sudo to ansible'
+    lineinfile:
+      path: /etc/sudoers.d/ansible
+      create: yes
+      regexp: '^ansible '
+      line: 'ansible ALL=(ALL) NOPASSWD: ALL'
+      validate: 'visudo -cf %s'
+  - name: 'Set authorized key to ansible user'
+    authorized_key:
+      user: ansible
+      key: "{{ lookup('file', authorized_key_file_path) }}"
+      key_options: "{{ authorized_key_options }}"
 
 - hosts: gitlab
   become: yes

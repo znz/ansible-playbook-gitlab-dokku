@@ -4,6 +4,7 @@ journald_users:
 
 sshd_allow_users:
 - 'vagrant'
+- 'ansible@10.0.0.1'
 
 sshd_allow_tcp_wrappers:
 - '10.'
@@ -11,6 +12,9 @@ sshd_allow_tcp_wrappers:
 
 byobu_users:
 - 'vagrant'
+
+authorized_key_file_path: '~/.ssh/id_rsa.pub'
+authorized_key_options: 'restrict,from="10.0.0.1"'
 
 nadoka:
 - service_name: 'fprog'
