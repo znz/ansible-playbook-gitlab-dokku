@@ -16,7 +16,7 @@ byobu_users:
 - 'vagrant'
 
 authorized_key_file_path: '~/.ssh/id_rsa.pub'
-authorized_key_options: 'restrict,from="10.0.0.0/8","172.17.0.0/16"'
+authorized_key_options: 'restrict,from="10.0.0.0/8,172.17.0.0/16"'
 
 nadoka:
 - service_name: 'fprog'
