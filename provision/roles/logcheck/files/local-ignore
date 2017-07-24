@@ -20,6 +20,7 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-(ci-multi-)?runner\[[[:digit:]]+\]: time="[^"]+" level=error msg="Checking GitLab compatibility\.\.\. not-compatible" reason="GitLab Runner >= 9\.0 can be used ONLY with GitLab CE/EE >= 9\.0" result=-1 runner=[[:xdigit:]]+ statusText="couldn't execute POST against https?://[a-z0-9.-]+/api/v4/runners/verify: Post https?://[a-z0-9.-]+/api/v4/runners/verify: dial tcp [0-9.]+:[0-9]+: getsockopt: connection refused"
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-(ci-multi-)?runner\[[[:digit:]]+\]: time="[^"]+" level=error msg="Checking GitLab compatibility\.\.\. not-compatible" reason="GitLab Runner >= 9\.0 can be used ONLY with GitLab CE/EE >= 9\.0" result=502 runner=[[:xdigit:]]+ statusText="502 Bad Gateway"
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-ci-multi-runner\[[[:digit:]]+\]: .*level=(info|warning) msg=
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-ci-multi-runner\[[[:digit:]]+\]: map\[\]$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-runner\[[[:digit:]]+\]: .*level=(info|warning) msg=
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ ifup\[[[:digit:]]+\]: /sbin/ifup: waiting for lock on /run/network/ifstate\.
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ iscsiadm\[[[:digit:]]+\]: iscsiadm: No records found$
