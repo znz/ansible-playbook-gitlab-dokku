@@ -41,6 +41,7 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ ruby\[[[:digit:]]+\]: Exception `LoadError' at .* - cannot load such file -- rubygems/defaults/ruby$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ ruby\[[[:digit:]]+\]: ruby
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sh\[[[:digit:]]+\]:
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ snap-repair\[[[:digit:]]+\]: error: cannot use snap-repair on a classic system$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ snapd?\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: Accepted publickey for
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: Connection closed by
