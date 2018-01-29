@@ -72,6 +72,7 @@ stage_gitlab_omnibus_config: |
 
   if File.exist?("/etc/letsencrypt/live/#{registry_domain}/fullchain.pem")
     registry_external_url "https://#{registry_domain}"
+    registry_nginx['port'] = 443
     registry_nginx['redirect_http_to_https'] = true
     registry_nginx['ssl_certificate'] = "/etc/letsencrypt/live/#{registry_domain}/fullchain.pem"
     registry_nginx['ssl_certificate_key'] = "/etc/letsencrypt/live/#{registry_domain}/privkey.pem"
