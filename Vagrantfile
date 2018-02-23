@@ -48,7 +48,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vm.vm.hostname = 'dokku0'
     vm.vm.network :private_network, ip: "#{PRIVATE_NETWORK}.9"
     vm.vm.provider 'virtualbox' do |vb|
-      vb.memory = ENV['DOKKU_MEMORY'] || 1024
+      memory = 0
+      if /darwin/ =~ RUBY_PLATFORM
+        max_memory = `system_profiler SPHardwareDataType`[/Memory: (\d+) GB/, 1].to_i
+        memory = max_memory * 1000 / 8
+      end
+      vb.memory = ENV['DOKKU_MEMORY'] || [memory, 1024].max
     end
   end
 
