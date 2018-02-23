@@ -97,6 +97,11 @@
       path: "/etc/gitlab-runner/config.toml"
       regexp: '^concurrent = '
       line: "concurrent = {{ stage_gitlab_runner_concurrent }}"
+  - name: "Add nadoka to docker group for WatchBot"
+    user:
+      name: nadoka
+      groups: docker
+      append: yes
 
 - hosts: dokku
   become: yes
@@ -125,3 +130,8 @@
       interface: docker0
       proto: tcp
       rule: allow
+  - name: "Add nadoka to docker group for WatchBot"
+    user:
+      name: nadoka
+      groups: docker
+      append: yes
