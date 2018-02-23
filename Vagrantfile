@@ -107,7 +107,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
               :name => :WatchBot,
               :channels => %w"CHANNELS",
               :command => proc {
-                out, status = Open3.capture2e({'LANG'=>'C'}, 'docker', 'ps', '--format', "{\{.ID\}}\\t{\{.Names\}}\\t{\{.CreatedAt\}}\\t{\{.Command\}}")
+                out, status = Open3.capture2e('docker', 'ps', '--format', "{\{.ID\}}\\t{\{.CreatedAt\}}\\t{\{.Image\}}\\t{\{.Command\}}\\t{\{.Names\}}")
                 out = out.split(/\n/)
                 unless status.success?
                   out << status.inspect

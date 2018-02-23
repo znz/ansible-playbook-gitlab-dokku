@@ -32,7 +32,7 @@ nadoka:
         :name => :WatchBot,
         :channels => %w"#docker",
         :command => proc {
-          out, status = Open3.capture2e({'LANG'=>'C'}, 'docker', 'ps', '--format', "{\{.ID\}}\\t{\{.Names\}}\\t{\{.CreatedAt\}}\\t{\{.Command\}}")
+          out, status = Open3.capture2e('docker', 'ps', '--format', "{\{.ID\}}\\t{\{.CreatedAt\}}\\t{\{.Image\}}\\t{\{.Names\}}\\t{\{.Command\}}")
           out = out.split(/\n/)
           unless status.success?
             out << status.inspect
