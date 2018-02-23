@@ -25,6 +25,23 @@ nadoka:
   irc_pass: "nil"
   irc_ssl_params: '{}'
   channel_info: "'#private' => { key: 'channelkey' }"
+  more_config: |
+    if system('docker', 'ps', %i[out err]=>File::NULL)
+      require 'open3'
+      BotConfig << {
+        :name => :WatchBot,
+        :channels => %w"#docker",
+        :command => proc {
+          out, status = Open3.capture2e({'LANG'=>'C'}, 'docker', 'ps', '--format', "{\{.ID\}}\\t{\{.Names\}}\\t{\{.CreatedAt\}}\\t{\{.Command\}}")
+          out = out.split(/\n/)
+          unless status.success?
+            out << status.inspect
+          end
+          out
+        },
+        :min_interval => 60,
+      }
+    end
 
 #postfix_relay_smtp_server: 'smtp.example.com'
 #postfix_relay_smtp_user: 'smtpuser'

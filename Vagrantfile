@@ -100,6 +100,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         irc_ssl_params: '{}',
         irc_nick: 'User',
         channel_info: ENV['NADOKA_CHANNEL_INFO'],
+        more_config: <<-'RUBY'.sub('CHANNELS', ENV['NADOKA_DOCKER_WATCH_CHANNELS']),
+          if system('docker', 'ps', %i[out err]=>File::NULL)
+            require 'open3'
+            BotConfig << {
+              :name => :WatchBot,
+              :channels => %w"CHANNELS",
+              :command => proc {
+                out, status = Open3.capture2e({'LANG'=>'C'}, 'docker', 'ps', '--format', "{\{.ID\}}\\t{\{.Names\}}\\t{\{.CreatedAt\}}\\t{\{.Command\}}")
+                out = out.split(/\n/)
+                unless status.success?
+                  out << status.inspect
+                end
+                out
+              },
+              :min_interval => 60,
+            }
+          end
+        RUBY
       }
     end
     ansible.extra_vars = vars
