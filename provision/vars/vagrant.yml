@@ -138,28 +138,30 @@ stage_gitlab_omnibus_config: |
   gitlab_rails['smtp_password'] = 'password'
   gitlab_rails['smtp_tls'] = true
 
-  mattermost['email_enable_sign_in_with_email'] = false # gitlab accounts only
-  mattermost['email_enable_sign_up_with_email'] = false # default
-  mattermost['email_send_email_notifications'] = true
-  mattermost['email_smtp_auth'] = true
-  mattermost['email_smtp_username'] = 'username'
-  mattermost['email_smtp_password'] = 'password'
-  mattermost['email_smtp_server'] = 'smtp.example.com'
-  mattermost['email_smtp_port'] = 465
-  mattermost['email_connection_security'] = 'TLS'
-  mattermost['email_feedback_name'] = 'GitLab Mattermost'
-  mattermost['email_feedback_email'] = 'email@example.com'
-  mattermost['email_enable_batching'] = true
-  mattermost['support_email'] =  'support@example.com'
+  mattermost['env'] = {}
 
-  mattermost['localization_server_locale'] = 'ja'
-  mattermost['localization_client_locale'] = 'ja'
+  mattermost['env']['MM_EMAILSETTINGS_ENABLESIGNINWITHEMAIL'] = 'false' # gitlab accounts only
+  mattermost['env']['MM_EMAILSETTINGS_ENABLESIGNUPWITHEMAIL'] = 'false' # default
+  mattermost['env']['MM_EMAILSETTINGS_SENDEMAILNOTIFICATIONS'] = 'true'
+  mattermost['env']['MM_EMAILSETTINGS_ENABLESMTPAUTH'] = 'true'
+  mattermost['env']['MM_EMAILSETTINGS_SMTPUSERNAME'] = 'username'
+  mattermost['env']['MM_EMAILSETTINGS_SMTPPASSWORD'] = 'password'
+  mattermost['env']['MM_EMAILSETTINGS_SMTPSERVER'] = 'smtp.example.com'
+  mattermost['env']['MM_EMAILSETTINGS_SMTPPORT'] = '465'
+  mattermost['env']['MM_EMAILSETTINGS_CONNECTIONSECURITY'] = 'TLS'
+  mattermost['env']['MM_EMAILSETTINGS_FEEDBACKNAME'] = 'GitLab Mattermost'
+  mattermost['env']['MM_EMAILSETTINGS_FEEDBACKEMAIL'] = 'email@example.com'
+  mattermost['env']['MM_EMAILSETTINGS_ENABLEEMAILBATCHING'] = 'true'
+  mattermost['env']['MM_SUPPORTSETTINGS_SUPPORTEMAIL'] =  'support@example.com'
 
-  mattermost['service_enable_incoming_webhooks'] = true
+  mattermost['env']['MM_LOCALIZATIONSETTINGS_DEFAULTSERVERLOCALE'] = 'ja'
+  mattermost['env']['MM_LOCALIZATIONSETTINGS_DEFAULTCLIENTLOCALE'] = 'ja'
 
-  mattermost['team_enable_team_creation'] = false
-  mattermost['team_enable_user_creation'] = true # default, required by GitLab SSO
-  mattermost['team_restrict_creation_to_domains'] = 'example.com'
+  mattermost['env']['MM_SERVICESETTINGS_ENABLEINCOMINGWEBHOOKS'] = 'true'
+
+  mattermost['env']['MM_TEAMSETTINGS_ENABLETEAMCREATION'] = 'false'
+  mattermost['env']['MM_TEAMSETTINGS_ENABLEUSERCREATION'] = 'true' # default, required by GitLab SSO
+  mattermost['env']['MM_TEAMSETTINGS_RESTRICTCREATIONTODOMAINS'] = 'example.com'
 
   pages_external_url 'http://10.0.0.10.nip.io'
 
