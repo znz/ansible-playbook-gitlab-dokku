@@ -1,0 +1,9 @@
+[Unit]
+Description=Stop dokku leak processes periodically
+
+[Timer]
+OnBootSec=30min
+OnUnitActiveSec=5h 30min
+
+[Install]
+WantedBy=timers.target

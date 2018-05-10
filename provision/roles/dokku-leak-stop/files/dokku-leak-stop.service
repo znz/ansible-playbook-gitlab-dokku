@@ -1,0 +1,6 @@
+[Unit]
+Description=Stop dokku leak processes
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "docker ps -f name='.+\.1\..+' --format '{{.Names}}' | tee /dev/stderr | xargs --no-run-if-empty docker stop"

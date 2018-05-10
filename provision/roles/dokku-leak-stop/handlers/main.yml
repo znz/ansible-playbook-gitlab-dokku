@@ -1,0 +1,6 @@
+- name: enable a timer for dokku-leak-stop
+  systemd:
+    name: dokku-leak-stop.timer
+    state: started
+    enabled: yes
+    daemon_reload: yes

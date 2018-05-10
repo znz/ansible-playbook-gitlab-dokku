@@ -122,6 +122,7 @@
   - role: znz.sshd
     sshd_allow_users:
     - 'dokku'
+  - role: dokku-leak-stop
   tasks:
   - name: 'ufw allow out on docker0 proto tcp'
     # allow nginx to app
