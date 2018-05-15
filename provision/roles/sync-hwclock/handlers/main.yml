@@ -1,0 +1,6 @@
+- name: enable a timer for sync-hwclock
+  systemd:
+    name: sync-hwclock.timer
+    state: started
+    enabled: yes
+    daemon_reload: yes

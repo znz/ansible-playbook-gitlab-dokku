@@ -1,0 +1,7 @@
+[Unit]
+Description=Sync hwclock
+
+[Service]
+Type=oneshot
+ExecStartPre=/sbin/hwclock --show
+ExecStart=/sbin/hwclock --systohc

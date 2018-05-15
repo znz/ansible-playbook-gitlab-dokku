@@ -35,6 +35,7 @@
     when: nadoka is not none and nadoka != []
   - role: znz.ntp
   - role: byobu
+  - role: sync-hwclock
   tasks:
   - name: 'Comment out 127.0.1.1 in /etc/hosts'
     replace:
