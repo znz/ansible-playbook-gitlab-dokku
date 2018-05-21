@@ -196,3 +196,7 @@ stage_dokku_plugin:
   url: https://github.com/dokku/dokku-postgres.git
 - name: apt
   url: https://github.com/F4-Group/dokku-apt
+- name: letsencrypt
+  url: https://github.com/dokku/dokku-letsencrypt.git
+- name: maintenance
+  url: https://github.com/dokku/dokku-maintenance.git
