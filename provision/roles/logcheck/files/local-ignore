@@ -22,6 +22,7 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-ci-multi-runner\[[[:digit:]]+\]: .*level=(info|warning) msg=
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-ci-multi-runner\[[[:digit:]]+\]: map\[\]$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ gitlab-runner\[[[:digit:]]+\]: .*level=(info|warning) msg=
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ hwclock\[[[:digit:]]+\]:
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ ifup\[[[:digit:]]+\]: /sbin/ifup: waiting for lock on /run/network/ifstate\.
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ iscsiadm\[[[:digit:]]+\]: iscsiadm: No records found$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ iscsid: iSCSI (logger|daemon) with pid=[[:digit:]]+ started!$
