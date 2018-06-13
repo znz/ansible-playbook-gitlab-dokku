@@ -68,10 +68,10 @@ For example:
     gitlab_rails['smtp_address'] = 'smtp.example.com'
     gitlab_rails['smtp_user_name'] = 'username'
     gitlab_rails['smtp_password'] = 'password'
-    mattermost['email_smtp_username'] = 'username'
-    mattermost['email_smtp_password'] = 'password'
-    mattermost['email_smtp_server'] = 'smtp.example.com'
-    mattermost['email_feedback_email'] = 'email@example.com'
-    mattermost['support_email'] =  'support@example.com'
+    mattermost['env']['MM_EMAILSETTINGS_SMTPUSERNAME'] = 'username'
+    mattermost['env']['MM_EMAILSETTINGS_SMTPPASSWORD'] = 'password'
+    mattermost['env']['MM_EMAILSETTINGS_SMTPSERVER'] = 'smtp.example.com'
+    mattermost['env']['MM_EMAILSETTINGS_FEEDBACKEMAIL'] = 'email@example.com'
+    mattermost['env']['MM_SUPPORTSETTINGSSUPPORTEMAIL'] = 'support@example.com'
 
 See https://docs.gitlab.com/omnibus/settings/smtp.html for more examples.
